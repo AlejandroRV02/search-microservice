@@ -4,6 +4,7 @@ This microservice is made with Flask 1.1.2
 This RESTful API contains the following endpoints:
 
 GET /searchComics
+
     @params:
         -search: Optional. This parameters is a character name or a comic title
         -character: Required. This parameter must be either 1 or 0. If 1, indicates that the search params is a character name
