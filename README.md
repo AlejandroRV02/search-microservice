@@ -17,13 +17,16 @@ GET /searchComics
 How to run
 
 This application is allocated in Docker Hub, so you can pull by typing this command:
+
     - docker pull alejandrorv/search-microservice:latest
 
 Once pulled, you need to run the next command
+
     - docker run -it --name search -p 5000:5000 alejandrorv/search-microservice
 
 You can change the first option for the local port if it causes any conflict
 Flag --name is also optional
 
 To test the endpoint you can make a request to the next url:
+
     - http://0.0.0.0:5000/searchComics?search=3-D Man&character=1&comic=0
