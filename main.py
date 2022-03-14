@@ -10,22 +10,23 @@ def searchComics():
     try:
         args = request.args
         search = args.get("search")
-        comic = args.get("comic")
-        character = args.get("character")
-            
+          
         URL = os.environ.get('MARVEL_API_URL')
         API_KEY = os.environ.get('API_KEY')
         HASH = os.environ.get('HASH') 
         characters_endpoint = 'characters'
         comics_endpoint = 'comics'
 
-        valid_req = True if (comic == '0' and character == '1') or (comic == '1' and character == '0') else False
-        if not valid_req: 
-            return make_response(jsonify({"msg":"Parameter values not valid"}), 400)
-
         params = {"ts": 1, "apikey": API_KEY, "hash":HASH}
         
         if search != None:
+            comic = args.get("comic")
+            character = args.get("character")
+            
+            valid_req = True if (comic == '0' and character == '1') or (comic == '1' and character == '0') else False
+            if not valid_req: 
+                return make_response(jsonify({"msg":"Parameter values not valid"}), 400)
+
             if character == '1':
                 params['name'] = search
                 personaje_req = requests.get(f'{URL}{characters_endpoint}', params=params).json()
@@ -61,7 +62,7 @@ def searchComics():
                 comics_req = requests.get(f'{URL}{comics_endpoint}', params=params).json()
 
                 if len(comics_req['data']['results']) == 0:
-                    return make_response(jsonify([]), 200)
+                    return make_response(jsonify({}), 200)
 
                 commic_res = {}
                 commic_res['id'] = comics_req['data']['results'][0]['id']
