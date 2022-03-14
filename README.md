@@ -11,7 +11,7 @@ GET /searchComics
         -comic: Required. This parameter must be either 1 or 0. If 1, indicates that the search params is a comic title
 
     @notes:
-        If no params is given, the result will be an array of characters alphabetically arranged 
+        If no SEARCH query param is given, the result will be an array of characters alphabetically arranged 
         Params character and comic cannot be the same. If character is 1, comic must be 0 and vice versa
 
 How to run
